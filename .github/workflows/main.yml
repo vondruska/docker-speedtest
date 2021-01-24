@@ -18,11 +18,11 @@ jobs:
     
     - name: Build docker image
       run: docker build --pull -t "$IMAGE_NAME:latest" .
-      if: github.ref == 'refs/heads/master'
+      if: github.ref == 'refs/heads/main'
       
     - name: Build docker image (branch)
       run: docker build --pull -t "$IMAGE_NAME:$GITHUB_SHA" .
-      if: github.ref != 'refs/heads/master'
+      if: github.ref != 'refs/heads/main'
 
     - name: Push images
       run: docker push $IMAGE_NAME
