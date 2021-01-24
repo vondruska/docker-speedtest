@@ -17,11 +17,11 @@ jobs:
       run: docker login docker.pkg.github.com -u "vondruska" -p "$REGISTRY_PASSWORD" 
     
     - name: Build docker image
-      run: docker build --pull -t "$IMAGE_NAME:latest" ./src/
+      run: docker build --pull -t "$IMAGE_NAME:latest" .
       if: github.ref == 'refs/heads/master'
       
     - name: Build docker image (branch)
-      run: docker build --pull -t "$IMAGE_NAME:$GITHUB_SHA" ./src/
+      run: docker build --pull -t "$IMAGE_NAME:$GITHUB_SHA" .
       if: github.ref != 'refs/heads/master'
 
     - name: Push images
