@@ -6,7 +6,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      IMAGE_NAME: gchr.io/vondruska/speedtest
+      IMAGE_NAME: ghcr.io/vondruska/speedtest
   
     steps:
     - uses: actions/checkout@v1
@@ -14,7 +14,7 @@ jobs:
     - name: Docker login
       env:
         REGISTRY_PASSWORD: ${{secrets.CR_PAT}}
-      run: docker login gchr.io -u "vondruska" -p "$REGISTRY_PASSWORD" 
+      run: docker login ghcr.io -u "vondruska" -p "$REGISTRY_PASSWORD" 
     
     - name: Build docker image
       run: docker build --pull -t "$IMAGE_NAME:latest" .
